@@ -2,6 +2,7 @@
 #define WALKER_LEG
 
 #include <math.h>
+#include <Arduino.h>
 
 #define WALKER_LEG_NUMSERVOS 3
 class WalkerLeg {
