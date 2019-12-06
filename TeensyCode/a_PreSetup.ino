@@ -184,8 +184,8 @@ const int kLeg5IDs[NUM_SERVOS_PER_LEG] = {15,16,17};
 
 //Initial Positions of legs, used in GaitGen
 //Leg 0 (front left)
-#define LEG0_INIT_X -120
-#define LEG0_INIT_Y 120
+#define LEG0_INIT_X -64
+#define LEG0_INIT_Y 64
 #define LEG0_INIT_Z -100
 //Leg1 (front right)
 #define LEG1_INIT_X 120
@@ -199,13 +199,13 @@ const int kLeg5IDs[NUM_SERVOS_PER_LEG] = {15,16,17};
 #define LEG3_INIT_X -120
 #define LEG3_INIT_Y -120
 #define LEG3_INIT_Z -100
-//Leg4 (back right)
+//Leg4 (mid right)
 #define LEG4_INIT_X 0
-#define LEG4_INIT_Y -120
+#define LEG4_INIT_Y -90
 #define LEG4_INIT_Z -100
-//Leg5 (back left
+//Leg5 (mid left)
 #define LEG5_INIT_X 0
-#define LEG5_INIT_Y -120
+#define LEG5_INIT_Y 90
 #define LEG5_INIT_Z -100
 
 const int kInitialPositions [NUM_LEGS] [3] = {//x,y,z
@@ -240,4 +240,9 @@ unsigned long time_1;
 unsigned long last_cycle_start = 0;
 unsigned int last_cycle_time = 0;
 
-WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, &kLeg0Limits[0][0], &kLeg0IDs[0]);
+WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg0Limits[0][0], kLeg0IDs[0]);
+WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg1Limits[0][0], kLeg1IDs[0]);
+WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg2Limits[0][0], kLeg2IDs[0]);
+WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg3Limits[0][0], kLeg3IDs[0]);
+WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg4Limits[0][0], kLeg4IDs[0]);
+WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg5Limits[0][0], kLeg5IDs[0]);
