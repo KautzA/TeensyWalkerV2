@@ -1,11 +1,11 @@
 #include "WalkerLeg.h"
 
-WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, float limits[WALKER_LEG_NUMSERVOS][2], int ids[WALKER_LEG_NUMSERVOS]) {
+WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, int limits[WALKER_LEG_NUMSERVOS][2], int ids[WALKER_LEG_NUMSERVOS]) {
 	side = true;
 	offsetX = offX;
 	offsetY = offY;
 	offsetZ = offZ;
-	offesetRZ = offRZ;
+	offsetRZ = offRZ;
 	coxaLength = coxa;
 	femurLength = femur;
 	tibiaLength = tibia;
@@ -29,12 +29,13 @@ bool WalkerLeg::writeServos(float toWrite[WALKER_LEG_NUMSERVOS][3]) {
 }
 
 bool WalkerLeg::setXYZ(float result[WALKER_LEG_NUMSERVOS][3], int posXYZ[3]) {
-    posXYZ[0] -= offX;
-    posXYZ[1] -= offY;
-    posXYZ[2] -= offZ;
+    posXYZ[0] -= offsetX;
+    posXYZ[1] -= offsetY;
+    posXYZ[2] -= offsetZ;
     
     rotateCoords(posXYZ);
     return true;
+}
 
 void WalkerLeg::rotateCoords(int posXYZ[3]){
     int posXYZdup[3];
@@ -43,8 +44,8 @@ void WalkerLeg::rotateCoords(int posXYZ[3]){
     posXYZdup[2] = posXYZ[2];
     
     float rotationMatrix[3][3] = {
-        {cosf(offsetRZ), -sinf(offsetRZ), 0}
-        {sinf(offsetRZ), cosf(offsetRZ), 0}
+        {cosf(offsetRZ), -sinf(offsetRZ), 0},
+        {sinf(offsetRZ), cosf(offsetRZ), 0},
         {0, 0, 1}
     };
     
