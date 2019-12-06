@@ -240,9 +240,9 @@ unsigned long time_1;
 unsigned long last_cycle_start = 0;
 unsigned int last_cycle_time = 0;
 
-WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg0Limits, kLeg0IDs);
-WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg1Limits, kLeg1IDs);
-WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg2Limits, kLeg2IDs);
-WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg3Limits, kLeg3IDs);
-WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg4Limits, kLeg4IDs);
-WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg5Limits, kLeg5IDs);
+WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg0Limits, kLeg0IDs, &DXL_SERIAL);
+WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg1Limits, kLeg1IDs, &DXL_SERIAL);
+WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg2Limits, kLeg2IDs, &DXL_SERIAL);
+WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg3Limits, kLeg3IDs, &DXL_SERIAL);
+WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg4Limits, kLeg4IDs, &DXL_SERIAL);
+WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg5Limits, kLeg5IDs, &DXL_SERIAL);
