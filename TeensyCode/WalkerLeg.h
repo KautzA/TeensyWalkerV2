@@ -4,6 +4,7 @@
 #include <math.h>
 #include <Arduino.h>
 
+
 #define WALKER_LEG_NUMSERVOS 3
 class WalkerLeg {
 	private:
@@ -33,6 +34,9 @@ class WalkerLeg {
 		
 		//write the servos in this leg and returns true if no error
 		bool writeServos(float toWrite[WALKER_LEG_NUMSERVOS][3]);
+
+   //Rotates a leg
+        void rotateCoords(int setXYZ[3]);
 };
 
 #endif

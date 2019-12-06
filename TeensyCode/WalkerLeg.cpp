@@ -23,7 +23,32 @@ void WalkerLeg::setSide(bool newSide) {
 }
 
 bool WalkerLeg::writeServos(float toWrite[WALKER_LEG_NUMSERVOS][3]) {
-	serial.print();
+	Serial.print("");
 	
 	return true;
+}
+
+bool WalkerLeg::setXYZ(float result[WALKER_LEG_NUMSERVOS][3], int posXYZ[3]) {
+    posXYZ[0] -= offX;
+    posXYZ[1] -= offY;
+    posXYZ[2] -= offZ;
+    
+    rotateCoords(posXYZ);
+    return true;
+
+void WalkerLeg::rotateCoords(int posXYZ[3]){
+    int posXYZdup[3];
+    posXYZdup[0] = posXYZ[0];
+    posXYZdup[1] = posXYZ[1];
+    posXYZdup[2] = posXYZ[2];
+    
+    float rotationMatrix[3][3] = {
+        {cosf(offsetRZ), -sinf(offsetRZ), 0}
+        {sinf(offsetRZ), cosf(offsetRZ), 0}
+        {0, 0, 1}
+    };
+    
+    posXYZ[0] = rotationMatrix[0][0] * posXYZdup[0] + rotationMatrix[0][1] * posXYZdup[1] + rotationMatrix[0][2] * posXYZdup[2];
+    posXYZ[1] = rotationMatrix[1][0] * posXYZdup[0] + rotationMatrix[1][1] * posXYZdup[1] + rotationMatrix[1][2] * posXYZdup[2];
+    posXYZ[2] = rotationMatrix[2][0] * posXYZdup[0] + rotationMatrix[2][1] * posXYZdup[1] + rotationMatrix[2][2] * posXYZdup[2];
 }
