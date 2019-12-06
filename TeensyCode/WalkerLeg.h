@@ -24,7 +24,7 @@ class WalkerLeg {
 	public:
 		
 		//constructor for a leg
-		WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, int limits[WALKER_LEG_NUMSERVOS][2], int ids[WALKER_LEG_NUMSERVOS]);
+		WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, const int limits[WALKER_LEG_NUMSERVOS][2], const int ids[WALKER_LEG_NUMSERVOS]);
 		
 		//set result to the angles that will place the foot at the specified locaton, returns true if possible, false if impossible.
 		bool setXYZ(float result[WALKER_LEG_NUMSERVOS][3], int posXYZ[3]);
