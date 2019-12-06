@@ -3,6 +3,8 @@
 void loop() {
   //Get time for synchronization purposes
   int currentTime = millis();
+  USER_SERIAL.println("\r\n-----------------------");
+  USER_SERIAL.println(currentTime);
   
   //Blink lights
   if (currentTime%1000 > 500) {
@@ -21,6 +23,32 @@ void loop() {
 
   //Calculate walking leg positions
   GaitTripod(legPositions, 10000, currentTime, 20, 0, 5, 0);
+  delay(100);
+
+  int targetLeg0[3];
+  int targetLeg1[3];
+  int targetLeg2[3];
+  int targetLeg3[3];
+  int targetLeg4[3];
+  int targetLeg5[3];
+
+  float anglesLeg0[3] = {0,0,0};
+  float anglesLeg1[3] = {0,0,0};
+  float anglesLeg2[3] = {0,0,0};
+  float anglesLeg3[3] = {0,0,0};
+  float anglesLeg4[3] = {0,0,0};
+  float anglesLeg5[3] = {0,0,0};
+   
+  for (int i = 0; i < 3; i++) {
+    targetLeg0[i] = legPositions[0][i];
+    targetLeg1[i] = legPositions[1][i];
+    targetLeg2[i] = legPositions[2][i];
+    targetLeg3[i] = legPositions[3][i];
+    targetLeg4[i] = legPositions[4][i];
+    targetLeg5[i] = legPositions[5][i];
+  }
+  
+  leg0.setXYZ(anglesLeg0, targetLeg0);
 }
 
 void blinkAllLights(int state){
