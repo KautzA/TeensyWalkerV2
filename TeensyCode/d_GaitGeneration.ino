@@ -33,5 +33,5 @@ void GaitTripod(int legPositions[NUM_LEGS][3], int period, int currentTime, int 
     legPositions[i][1] = (xtemp * sinf(scaledYawWave) + ytemp * cosf(scaledYawWave));
   }
 
-  Serial.println(String(legPositions[0][0]) + ' ' + String(legPositions[0][1]) + ' ' + String(legPositions[0][2]));
+  //Serial.println(String(legPositions[0][0]) + ' ' + String(legPositions[0][1]) + ' ' + String(legPositions[0][2]));
 }

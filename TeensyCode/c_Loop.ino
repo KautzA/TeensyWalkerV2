@@ -1,11 +1,17 @@
 //loop
 
 void loop() {
-  if (millis()%1000 > 500) {
+  //Get time for synchronization purposes
+  int currentTime = millis();
+  
+  //Blink lights
+  if (currentTime%1000 > 500) {
     blinkAllLights(1);
   } else {
     blinkAllLights(0);
   }
+
+  //Get initial leg positions
   int legPositions [NUM_LEGS] [3];
   for (int i = 0; i < NUM_LEGS; i++) {
     legPositions[i][0] = kInitialPositions[i][0];
@@ -13,7 +19,8 @@ void loop() {
     legPositions[i][2] = kInitialPositions[i][2];
   }
 
-  GaitTripod(legPositions, 10000, millis(), 20, 0, 5, 0);
+  //Calculate walking leg positions
+  GaitTripod(legPositions, 10000, currentTime, 20, 0, 5, 0);
 }
 
 void blinkAllLights(int state){
