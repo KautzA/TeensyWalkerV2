@@ -1,6 +1,6 @@
 #include "WalkerLeg.h"
 
-WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, int limits[WALKER_LEG_NUMSERVOS][2], int ids[WALKER_LEG_NUMSERVOS]) {
+WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, const int limits[WALKER_LEG_NUMSERVOS][2], const int ids[WALKER_LEG_NUMSERVOS]) {
 	side = true;
 	offsetX = offX;
 	offsetY = offY;

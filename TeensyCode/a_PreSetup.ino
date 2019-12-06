@@ -12,7 +12,7 @@
 //Serial Ports
 #define USER_SERIAL Serial
 #define DXL_SERIAL Serial1
-#define USB_SERIAL Serial
+#define TEENSY_USB_SERIAL Serial
 #define COMMAND_SERIAL Serial2
 #define MAESTRO_SERIAL Serial4
 
@@ -240,9 +240,9 @@ unsigned long time_1;
 unsigned long last_cycle_start = 0;
 unsigned int last_cycle_time = 0;
 
-WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg0Limits[0][0], kLeg0IDs[0]);
-WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg1Limits[0][0], kLeg1IDs[0]);
-WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg2Limits[0][0], kLeg2IDs[0]);
-WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg3Limits[0][0], kLeg3IDs[0]);
-WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg4Limits[0][0], kLeg4IDs[0]);
-WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg5Limits[0][0], kLeg5IDs[0]);
+WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg0Limits, kLeg0IDs);
+WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg1Limits, kLeg1IDs);
+WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg2Limits, kLeg2IDs);
+WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg3Limits, kLeg3IDs);
+WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg4Limits, kLeg4IDs);
+WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg5Limits, kLeg5IDs);
