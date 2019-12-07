@@ -184,28 +184,28 @@ const int kLeg5IDs[NUM_SERVOS_PER_LEG] = {15,16,17};
 
 //Initial Positions of legs, used in GaitGen
 //Leg 0 (front left)
-#define LEG0_INIT_X -120
-#define LEG0_INIT_Y 120
+#define LEG0_INIT_X -150
+#define LEG0_INIT_Y 150
 #define LEG0_INIT_Z -100
 //Leg1 (front right)
-#define LEG1_INIT_X 120
-#define LEG1_INIT_Y 120
+#define LEG1_INIT_X 150
+#define LEG1_INIT_Y 150
 #define LEG1_INIT_Z -100
 //Leg2 (back right)
-#define LEG2_INIT_X 120
-#define LEG2_INIT_Y -120
+#define LEG2_INIT_X 150
+#define LEG2_INIT_Y -150
 #define LEG2_INIT_Z -100
 //Leg3 (back left
-#define LEG3_INIT_X -120
-#define LEG3_INIT_Y -120
+#define LEG3_INIT_X -150
+#define LEG3_INIT_Y -150
 #define LEG3_INIT_Z -100
 //Leg4 (mid right)
 #define LEG4_INIT_X 0
-#define LEG4_INIT_Y -170
+#define LEG4_INIT_Y -212
 #define LEG4_INIT_Z -100
 //Leg5 (mid left)
 #define LEG5_INIT_X 0
-#define LEG5_INIT_Y 170
+#define LEG5_INIT_Y 212
 #define LEG5_INIT_Z -100
 
 const int kInitialPositions [NUM_LEGS] [3] = {//x,y,z

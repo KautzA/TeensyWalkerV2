@@ -6,6 +6,7 @@
 
 
 #define WALKER_LEG_NUMSERVOS 3
+#define WALKER_LEG_MAESTRO_SERIAL Serial4
 class WalkerLeg {
   private:
     //static const int kNumServos;

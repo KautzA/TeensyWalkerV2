@@ -16,7 +16,6 @@ WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int fe
 
     servoIDs[i] = ids[i];
   }
-  servoSerial = servoSerialIn;
 }
 
 void WalkerLeg::initializeServos() {
@@ -97,7 +96,7 @@ bool WalkerLeg::setServo(int servoID, float rads) {
   Serial.print(servoID);
   Serial.print(" set to: ");
   Serial.println(rads);
-  int Pos = constrain( (map((int)(rads * 180.0 / PI), -90, 90, 1000, 2000)), 1000, 2000);
+  int Pos = constrain( (map((int)(rads * 180.0 / PI), -90, 90, 1000, 2000)), 1200, 1800);
 
   Serial.println(Pos);
   //void ServoWrite(byte ServoID, unsigned int Pos){
@@ -126,12 +125,12 @@ bool WalkerLeg::setServo(int servoID, float rads) {
     Serial.println(Data2);
     */
     
-  servoSerial->write(Header);
-  servoSerial->write(Device);
-  servoSerial->write(TruncatedCommand);
-  servoSerial->write(Servoplace);
-  servoSerial->write(Data1);
-  servoSerial->write(Data2);
+  WALKER_LEG_MAESTRO_SERIAL.write(Header);
+  WALKER_LEG_MAESTRO_SERIAL.write(Device);
+  WALKER_LEG_MAESTRO_SERIAL.write(TruncatedCommand);
+  WALKER_LEG_MAESTRO_SERIAL.write(Servoplace);
+  WALKER_LEG_MAESTRO_SERIAL.write(Data1);
+  WALKER_LEG_MAESTRO_SERIAL.write(Data2);
 
   return true;
 }
