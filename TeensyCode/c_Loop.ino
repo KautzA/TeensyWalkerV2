@@ -22,7 +22,7 @@ void loop() {
   }
 
   //Calculate walking leg positions
-  GaitTripod(legPositions, 10000, currentTime, 20, 0, 20, 0);
+  GaitTripod(legPositions, 10000, currentTime, 50, 0, 50, 0);
   delay(100);
 
   int targetLeg0[3];
@@ -56,9 +56,13 @@ void loop() {
   Serial.println("Leg0 Coords");
   
   leg0.setXYZ(anglesLeg0, targetLeg0);
-  leg4.setXYZ(anglesLeg4, targetLeg4);
+  leg1.setXYZ(anglesLeg1, targetLeg1);
+  //leg2.setXYZ(anglesLeg2, targetLeg2);
+  //leg3.setXYZ(anglesLeg3, targetLeg3);
+  //leg4.setXYZ(anglesLeg4, targetLeg4);
+  //leg5.setXYZ(anglesLeg5, targetLeg5);
 
-  leg1.setServo(3,0);
+  //leg1.setServo(3,0);
 }
 
 void blinkAllLights(int state){
