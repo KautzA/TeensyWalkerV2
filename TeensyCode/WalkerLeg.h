@@ -2,11 +2,12 @@
 #define WALKER_LEG
 
 #include <math.h>
-#include <Arduino.h>
+//#include <Arduino.h>
+#include "MyServo.h"
 
 
 #define WALKER_LEG_NUMSERVOS 3
-#define WALKER_LEG_MAESTRO_SERIAL Serial4
+//#define WALKER_LEG_MAESTRO_SERIAL Serial1
 class WalkerLeg {
   private:
     //static const int kNumServos;
@@ -20,15 +21,11 @@ class WalkerLeg {
     int femurLength;
     int tibiaLength;
     int tarsusLength;
-    float servoLimits[WALKER_LEG_NUMSERVOS][2];
-    int servoIDs[WALKER_LEG_NUMSERVOS];
-
-    //variable for talking to servos
-    Stream* servoSerial;
+    MyServo* legServos[WALKER_LEG_NUMSERVOS];
   public:
 
     //constructor for a leg
-    WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, const int limits[WALKER_LEG_NUMSERVOS][2], const int ids[WALKER_LEG_NUMSERVOS], Stream* servoSerialIn);
+    WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, MyServo* servos[]);
 
     //initalize servo communications
     void initializeServos();

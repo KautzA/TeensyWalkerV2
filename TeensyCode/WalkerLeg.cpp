@@ -1,6 +1,6 @@
 #include "WalkerLeg.h"
 
-WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, const int limits[WALKER_LEG_NUMSERVOS][2], const int ids[WALKER_LEG_NUMSERVOS], Stream* servoSerialIn) {
+WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, MyServo* servos[]) {
   side = true;
   offsetX = offX;
   offsetY = offY;
@@ -11,10 +11,7 @@ WalkerLeg::WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int fe
   tibiaLength = tibia;
   tarsusLength = tarsus;
   for (int i = 0; i < WALKER_LEG_NUMSERVOS; i++) {
-    servoLimits[i][0] = limits[i][0];
-    servoLimits[i][1] = limits[i][1];
-
-    servoIDs[i] = ids[i];
+    legServos[i] = servos[i];
   }
 }
 
@@ -26,7 +23,7 @@ void WalkerLeg::setSide(bool newSide) {
 }
 
 bool WalkerLeg::writeServos(float toWrite[WALKER_LEG_NUMSERVOS]) {
-  Serial.print("");
+  //Serial.print("");
 
   return true;
 }
@@ -101,7 +98,8 @@ bool WalkerLeg::setServo(int servoID, float rads) {
   Serial.println(Pos);
   //void ServoWrite(byte ServoID, unsigned int Pos){
 
-  
+
+  /* //Maestro Servo Control
   byte Header = 170; //Header that opens the command and allows autobaudrate to be set
   byte Device = 12; //Identifier for the maestro in case of chaining Default 12
   byte TruncatedCommand = 04;//0x04 represents the command to set servo position
@@ -116,14 +114,12 @@ bool WalkerLeg::setServo(int servoID, float rads) {
     bitWrite(Data2, i, bitRead(ScalePos, (i + 7)));
   }
   //Write the packet
-  /*
     Serial.println(Header);
     Serial.println(Device);
     Serial.println(TruncatedCommand);
     Serial.println(Servoplace);
     Serial.println(Data1);
     Serial.println(Data2);
-    */
     
   WALKER_LEG_MAESTRO_SERIAL.write(Header);
   WALKER_LEG_MAESTRO_SERIAL.write(Device);
@@ -131,6 +127,7 @@ bool WalkerLeg::setServo(int servoID, float rads) {
   WALKER_LEG_MAESTRO_SERIAL.write(Servoplace);
   WALKER_LEG_MAESTRO_SERIAL.write(Data1);
   WALKER_LEG_MAESTRO_SERIAL.write(Data2);
+  */
 
   return true;
 }
