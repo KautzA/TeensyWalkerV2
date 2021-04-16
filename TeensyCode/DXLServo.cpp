@@ -1,18 +1,30 @@
 #include "DXLServo.h"
 
 //Constructor
-DXLServo::DXLServo(int busVersion, Stream* servoSerialIn){
-  
+//Relies on having bioloid library setup
+DXLServo::DXLServo(int id, Stream* servoSerialIn){
+  servo_id = id;
+  //nothing when using KurtE's bioloid library
 }
 
 //Set angle of target servo
-void DXLServo::setServoRad(int id, float pos){
-  
+void DXLServo::setServoRad(float pos){
+  float poscounts = (pos / 5.23599) * 1024;
+  int counts = constrain(pos, 0, 1024);
+  SetPosition(servo_id, counts);
 }
 
 //Get angle of target servo
-float DXLServo::getServoRad(int id){
-  return 0.0;
+float DXLServo::getServoRad(){
+  return (((float)(ax12GetRegister(servo_id,AX_PRESENT_POSITION_L,2)))/1024.0)*5.23599;//setup for AX12
+}
+
+float DXLServo::getServoLowerLimitRad() {
+  return (((float)(ax12GetRegister(servo_id,AX_CW_ANGLE_LIMIT_L,2)))/1024.0)*5.23599;//setup for AX12
+}
+
+float DXLServo::getServoUpperLimitRad() {
+  return (((float)(ax12GetRegister(servo_id,AX_CCW_ANGLE_LIMIT_L,2)))/1024.0)*5.23599;//setup for AX12
 }
 
 //Deconstructor

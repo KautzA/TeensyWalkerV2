@@ -24,6 +24,8 @@
 //Libraries
 
 #include "WalkerLeg.h"
+#include "DXLServo.h"
+#include "MaestroServo.h"
 
 //#include<ax12Serial.h>   //KurtE's bioloid library https://github.com/KurtE/BioloidSerial
 //#include<BioloidSerial.h> //KurtE's bioloid library https://github.com/KurtE/BioloidSerial
@@ -240,9 +242,28 @@ unsigned long time_1;
 unsigned long last_cycle_start = 0;
 unsigned int last_cycle_time = 0;
 
-WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg0Limits, kLeg0IDs, &DXL_SERIAL);
-WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg1Limits, kLeg1IDs, &DXL_SERIAL);
-WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg2Limits, kLeg2IDs, &DXL_SERIAL);
-WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg3Limits, kLeg3IDs, &DXL_SERIAL);
-WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg4Limits, kLeg4IDs, &DXL_SERIAL);
-WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg5Limits, kLeg5IDs, &DXL_SERIAL);
+
+
+DXLServo leg0_servos[] = {DXLServo(1, &DXL_SERIAL), DXLServo(2, &DXL_SERIAL), DXLServo(3, &DXL_SERIAL)};
+DXLServo leg1_servos[] = {DXLServo(4, &DXL_SERIAL), DXLServo(5, &DXL_SERIAL), DXLServo(6, &DXL_SERIAL)};
+DXLServo leg2_servos[] = {DXLServo(7, &DXL_SERIAL), DXLServo(8, &DXL_SERIAL), DXLServo(9, &DXL_SERIAL)};
+DXLServo leg3_servos[] = {DXLServo(10, &DXL_SERIAL), DXLServo(11, &DXL_SERIAL), DXLServo(12, &DXL_SERIAL)};
+DXLServo leg4_servos[] = {DXLServo(13, &DXL_SERIAL), DXLServo(14, &DXL_SERIAL), DXLServo(15, &DXL_SERIAL)};
+DXLServo leg5_servos[] = {DXLServo(16, &DXL_SERIAL), DXLServo(17, &DXL_SERIAL), DXLServo(18, &DXL_SERIAL)};
+
+MyServo *leg0_servos_ptrs[] = {&leg0_servos[0], &leg0_servos[1], &leg0_servos[2]};
+MyServo *leg1_servos_ptrs[] = {&leg1_servos[0], &leg1_servos[1], &leg1_servos[2]};
+MyServo *leg2_servos_ptrs[] = {&leg2_servos[0], &leg2_servos[1], &leg2_servos[2]};
+MyServo *leg3_servos_ptrs[] = {&leg3_servos[0], &leg3_servos[1], &leg3_servos[2]};
+MyServo *leg4_servos_ptrs[] = {&leg4_servos[0], &leg4_servos[1], &leg4_servos[2]};
+MyServo *leg5_servos_ptrs[] = {&leg5_servos[0], &leg5_servos[1], &leg5_servos[2]};
+
+
+
+
+WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0.0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg0_servos_ptrs);
+WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg1_servos_ptrs);
+WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg2_servos_ptrs);
+WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg3_servos_ptrs);
+WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg4_servos_ptrs);
+WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg5_servos_ptrs);

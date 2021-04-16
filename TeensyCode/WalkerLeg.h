@@ -2,9 +2,8 @@
 #define WALKER_LEG
 
 #include <math.h>
-//#include <Arduino.h>
+#include <Arduino.h>
 #include "MyServo.h"
-
 
 #define WALKER_LEG_NUMSERVOS 3
 //#define WALKER_LEG_MAESTRO_SERIAL Serial1
@@ -21,15 +20,12 @@ class WalkerLeg {
     int femurLength;
     int tibiaLength;
     int tarsusLength;
-    MyServo* legServos[WALKER_LEG_NUMSERVOS];
+    MyServo *legServos[WALKER_LEG_NUMSERVOS];//pointer to array
   public:
 
     //constructor for a leg
     WalkerLeg(int offX, int offY, int offZ, float offRZ, int coxa, int femur, int tibia, int tarsus, MyServo* servos[]);
-
-    //initalize servo communications
-    void initializeServos();
-
+    
     //set the value of a servo
     bool setServo(int id, float rads);
 
