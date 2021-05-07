@@ -56,7 +56,7 @@ void loop() {
   Serial.println("Leg0 Coords");
   
   leg0.setXYZ(anglesLeg0, targetLeg0);
-  leg1.setXYZ(anglesLeg1, targetLeg1);
+  //leg1.setXYZ(anglesLeg1, targetLeg1);
   //leg2.setXYZ(anglesLeg2, targetLeg2);
   //leg3.setXYZ(anglesLeg3, targetLeg3);
   //leg4.setXYZ(anglesLeg4, targetLeg4);
@@ -66,6 +66,7 @@ void loop() {
 }
 
 void blinkAllLights(int state){
+  digitalWrite(13, state);//Teensy 3.5 onboard LED
   digitalWrite(LED_RUNNING, state);
   digitalWrite(LED_ERROR, 1-state);
   digitalWrite(LED_RGB_RED, state);
