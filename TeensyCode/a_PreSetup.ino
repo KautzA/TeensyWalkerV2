@@ -25,8 +25,8 @@
 
 #include "WalkerLeg.h"
 
-//#include<ax12Serial.h>   //KurtE's bioloid library https://github.com/KurtE/BioloidSerial
-//#include<BioloidSerial.h> //KurtE's bioloid library https://github.com/KurtE/BioloidSerial
+#include<ax12Serial.h>   //KurtE's bioloid library https://github.com/KurtE/BioloidSerial
+#include<BioloidSerial.h> //KurtE's bioloid library https://github.com/KurtE/BioloidSerial
 
 #include<math.h> //enable use of cosf and sinf to use FPU
 
@@ -184,6 +184,7 @@ const int kLeg5IDs[NUM_SERVOS_PER_LEG] = {15,16,17};
 
 //Initial Positions of legs, used in GaitGen
 //Leg 0 (front left)
+<<<<<<< Updated upstream
 #define LEG0_INIT_X -150
 #define LEG0_INIT_Y 150
 #define LEG0_INIT_Z -100
@@ -207,6 +208,31 @@ const int kLeg5IDs[NUM_SERVOS_PER_LEG] = {15,16,17};
 #define LEG5_INIT_X 0
 #define LEG5_INIT_Y 212
 #define LEG5_INIT_Z -100
+=======
+#define LEG0_INIT_X 150
+#define LEG0_INIT_Y 150
+#define LEG0_INIT_Z -75
+//Leg1 (front right)
+#define LEG1_INIT_X 150
+#define LEG1_INIT_Y -150
+#define LEG1_INIT_Z -75
+//Leg2 (back right)
+#define LEG2_INIT_X -150
+#define LEG2_INIT_Y -150
+#define LEG2_INIT_Z -75
+//Leg3 (back left
+#define LEG3_INIT_X -150
+#define LEG3_INIT_Y 150
+#define LEG3_INIT_Z -75
+//Leg4 (mid right)
+#define LEG4_INIT_X 0
+#define LEG4_INIT_Y -120
+#define LEG4_INIT_Z -75
+//Leg5 (mid left)
+#define LEG5_INIT_X 0
+#define LEG5_INIT_Y 120
+#define LEG5_INIT_Z -75
+>>>>>>> Stashed changes
 
 const int kInitialPositions [NUM_LEGS] [3] = {//x,y,z
   {LEG0_INIT_X, LEG0_INIT_Y, LEG0_INIT_Z},//Leg0
@@ -219,9 +245,9 @@ const int kInitialPositions [NUM_LEGS] [3] = {//x,y,z
 
 
 //Dimensions used in leg calculations
-#define COXA_LENGTH 10
-#define FEMUR_LENGTH 80
-#define TIBIA_LENGTH 142
+#define COXA_LENGTH 50
+#define FEMUR_LENGTH 93
+#define TIBIA_LENGTH 97
 #define TARSUS_LENGTH 25
 
 
@@ -240,9 +266,37 @@ unsigned long time_1;
 unsigned long last_cycle_start = 0;
 unsigned int last_cycle_time = 0;
 
+<<<<<<< Updated upstream
 WalkerLeg leg0 = WalkerLeg(-55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg0Limits, kLeg0IDs, &DXL_SERIAL);
 WalkerLeg leg1 = WalkerLeg(55, 95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg1Limits, kLeg1IDs, &DXL_SERIAL);
 WalkerLeg leg2 = WalkerLeg(55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg2Limits, kLeg2IDs, &DXL_SERIAL);
 WalkerLeg leg3 = WalkerLeg(-55, -95, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg3Limits, kLeg3IDs, &DXL_SERIAL);
 WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg4Limits, kLeg4IDs, &DXL_SERIAL);
 WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, kLeg5Limits, kLeg5IDs, &DXL_SERIAL);
+=======
+
+
+DXLServo leg0_servos[] = {DXLServo(2, &DXL_SERIAL), DXLServo(3, &DXL_SERIAL), DXLServo(4, &DXL_SERIAL)};
+DXLServo leg1_servos[] = {DXLServo(7, &DXL_SERIAL), DXLServo(8, &DXL_SERIAL), DXLServo(9, &DXL_SERIAL)};
+DXLServo leg2_servos[] = {DXLServo(12, &DXL_SERIAL), DXLServo(13, &DXL_SERIAL), DXLServo(14, &DXL_SERIAL)};
+DXLServo leg3_servos[] = {DXLServo(17, &DXL_SERIAL), DXLServo(18, &DXL_SERIAL), DXLServo(19, &DXL_SERIAL)};
+DXLServo leg4_servos[] = {DXLServo(25, &DXL_SERIAL), DXLServo(25, &DXL_SERIAL), DXLServo(25, &DXL_SERIAL)};
+DXLServo leg5_servos[] = {DXLServo(25, &DXL_SERIAL), DXLServo(25, &DXL_SERIAL), DXLServo(25, &DXL_SERIAL)};
+
+MyServo *leg0_servos_ptrs[] = {&leg0_servos[0], &leg0_servos[1], &leg0_servos[2]};
+MyServo *leg1_servos_ptrs[] = {&leg1_servos[0], &leg1_servos[1], &leg1_servos[2]};
+MyServo *leg2_servos_ptrs[] = {&leg2_servos[0], &leg2_servos[1], &leg2_servos[2]};
+MyServo *leg3_servos_ptrs[] = {&leg3_servos[0], &leg3_servos[1], &leg3_servos[2]};
+MyServo *leg4_servos_ptrs[] = {&leg4_servos[0], &leg4_servos[1], &leg4_servos[2]};
+MyServo *leg5_servos_ptrs[] = {&leg5_servos[0], &leg5_servos[1], &leg5_servos[2]};
+
+
+
+
+WalkerLeg leg0 = WalkerLeg(52, 65, 0, 0.0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg0_servos_ptrs);
+WalkerLeg leg1 = WalkerLeg(-52, 65, 0, 0.0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg1_servos_ptrs);
+WalkerLeg leg2 = WalkerLeg(-52, -65, 0, PI, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg2_servos_ptrs);
+WalkerLeg leg3 = WalkerLeg(52, -65, 0, PI, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg3_servos_ptrs);
+WalkerLeg leg4 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg4_servos_ptrs);
+WalkerLeg leg5 = WalkerLeg(110, 0, 0, 0, COXA_LENGTH, FEMUR_LENGTH, TIBIA_LENGTH, TARSUS_LENGTH, leg5_servos_ptrs);
+>>>>>>> Stashed changes

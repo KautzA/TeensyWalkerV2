@@ -42,9 +42,21 @@ bool WalkerLeg::setXYZ(float result[WALKER_LEG_NUMSERVOS], int posXYZ[3]) {
   rotateCoords(posXYZ); //{femur, coxa, tibia}
 
   //
+<<<<<<< Updated upstream
   float pos_x = posXYZ[0];
   float pos_y = posXYZ[1];
   float pos_z = posXYZ[2];
+=======
+  float pos_x = posXYZdup[0];
+  float pos_y = posXYZdup[1];
+  float pos_z = posXYZdup[2];
+
+  
+  Serial1.printf("WalkerLeg::setXYZ: global x:%3d, y:%3d, z:%3d local x:%3f, y:%3f, z:%3f\n",
+                posXYZ[0], posXYZ[1], posXYZ[2],
+                pos_x, pos_y, pos_z);
+  
+>>>>>>> Stashed changes
 
   float desiredAngle[WALKER_LEG_NUMSERVOS];
   
@@ -58,6 +70,7 @@ bool WalkerLeg::setXYZ(float result[WALKER_LEG_NUMSERVOS], int posXYZ[3]) {
 
   //tibia servo
   desiredAngle[2] = -(acosf(((tibiaLength*tibiaLength)+(femurLength*femurLength)-((leg_radius*leg_radius)+(pos_z*pos_z)))/(-2*femurLength*tibiaLength)));
+<<<<<<< Updated upstream
 
   for (int i = 0; i < WALKER_LEG_NUMSERVOS; i++) {
     Serial.print(servoIDs[i]);
@@ -71,6 +84,16 @@ bool WalkerLeg::setXYZ(float result[WALKER_LEG_NUMSERVOS], int posXYZ[3]) {
 
 
 
+=======
+  Serial1.print("Leg angles");
+  for (int i = 0; i < WALKER_LEG_NUMSERVOS; i++) {
+    //Serial.print(servoIDs[i]);
+    Serial1.print(", ");
+    Serial1.print(desiredAngle[i]);
+    //setServo(servoIDs[i], desiredAngle[i]);
+  }
+  Serial1.print("\n");
+>>>>>>> Stashed changes
   return true;
 }
 
@@ -93,6 +116,7 @@ void WalkerLeg::rotateCoords(int posXYZ[3]) {
 
 //Write to Servo
 bool WalkerLeg::setServo(int servoID, float rads) {
+<<<<<<< Updated upstream
   Serial.print(servoID);
   Serial.print(" set to: ");
   Serial.println(rads);
@@ -131,6 +155,12 @@ bool WalkerLeg::setServo(int servoID, float rads) {
   WALKER_LEG_MAESTRO_SERIAL.write(Servoplace);
   WALKER_LEG_MAESTRO_SERIAL.write(Data1);
   WALKER_LEG_MAESTRO_SERIAL.write(Data2);
+=======
+  Serial1.print(servoID);
+  Serial1.print(" set to: ");
+  Serial1.println(rads);
+  legServos[servoID]->setServoRad(rads);
+>>>>>>> Stashed changes
 
   return true;
 }

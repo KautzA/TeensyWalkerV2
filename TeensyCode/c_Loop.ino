@@ -48,17 +48,29 @@ void loop() {
     targetLeg5[i] = legPositions[5][i];
   }
 
-  Serial.print(targetLeg0[0]);
-  Serial.print(", ");
-  Serial.print(targetLeg0[1]);
-  Serial.print(", ");
-  Serial.print(targetLeg0[2]);
-  Serial.println("Leg0 Coords");
+  USER_SERIAL.print(targetLeg0[0]);
+  USER_SERIAL.print(", ");
+  USER_SERIAL.print(targetLeg0[1]);
+  USER_SERIAL.print(", ");
+  USER_SERIAL.print(targetLeg0[2]);
+  USER_SERIAL.println("Leg0 Coords");
   
   leg0.setXYZ(anglesLeg0, targetLeg0);
   leg4.setXYZ(anglesLeg4, targetLeg4);
 
+<<<<<<< Updated upstream
   leg1.setServo(3,0);
+=======
+  //leg1.setServo(3,0);
+
+  USER_SERIAL.print("Leg0 angles: ");
+  for(int i = 0; i < NUM_SERVOS_PER_LEG; i++) {
+    USER_SERIAL.print(anglesLeg0[i]);
+    USER_SERIAL.print(", ");
+  }
+  USER_SERIAL.print("\n");
+  leg0.writeServos(anglesLeg0);
+>>>>>>> Stashed changes
 }
 
 void blinkAllLights(int state){

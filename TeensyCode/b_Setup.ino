@@ -5,8 +5,14 @@ void setup(){
   //Open Serial Ports
   USER_SERIAL.begin(38400);
   COMMAND_SERIAL.begin(38400);
+<<<<<<< Updated upstream
   MAESTRO_SERIAL.begin(9600); //9600 for Maestro servo controller
   MAESTRO_SERIAL.write(170);
+=======
+  //MAESTRO_SERIAL.begin(9600); //9600 for Maestro servo controller
+  //MAESTRO_SERIAL.write(170);
+  ax12Init(1000000, &DXL_SERIAL,-1);
+>>>>>>> Stashed changes
 
 #if defined(GIMBAL_ENABLE)//Gimbal Enable
   GimbalOut.begin(GIMBAL_PPM_PIN);
